@@ -79,6 +79,7 @@ local function delete_bonekeeper()
     local bonekeeper 
     local tween
     game.Workspace.Gravity = 0
+    local y_start = chr.HumanoidRootPart.Position.Y 
     for _, part in pairs(live:GetChildren()) do
         if string.find(part.Name, "boneboy") then
             bonekeeper = part
@@ -102,7 +103,7 @@ local function delete_bonekeeper()
     end)
     while bonekeeper do
         local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.RightVector * 40
-        pos = Vector3.new(pos.X, 0, pos.Y)
+        pos = Vector3.new(pos.X, y_start, pos.Y)
         tween = fly_to(pos, 300)
         wait(tween.TweenInfo.Time)
     end
