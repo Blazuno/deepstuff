@@ -97,6 +97,7 @@ local function delete_bonekeeper()
                 local tween = fly_to(Vector3.new(-5798.708984375, 459.4010925292969, -6341.38037109375), 300)
                 wait(tween.TweenInfo.Time)
                 game.Workspace.Gravity = 196.2
+                chr.Torso.Anchored = false
                 return
             end
             wait(0.01)
@@ -104,8 +105,10 @@ local function delete_bonekeeper()
     end)
     while bonekeeper do
         local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
+        chr.Torso.Anchored = false
         tween = fly_to(pos, 300)
-        wait(tween.TweenInfo.Time)
+        chr.Torso.Anchored = true
+        wait(5)
     end
 end
 
