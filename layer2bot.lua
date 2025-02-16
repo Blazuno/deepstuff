@@ -102,6 +102,7 @@ local function delete_bonekeeper()
     end)
     while bonekeeper do
         local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.RightVector * 40
+        pos = Vector3.new(pos.X, 0, pos.Y)
         tween = fly_to(pos, 300)
         wait(tween.TweenInfo.Time)
     end
