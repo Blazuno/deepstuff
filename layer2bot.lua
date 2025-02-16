@@ -88,7 +88,7 @@ local function delete_bonekeeper()
             break
         end 
     end
-    thread = spawn(function()
+    local thread = spawn(function()
         while bonekeeper.Head do 
             local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
             chr.Torso.Anchored = false
