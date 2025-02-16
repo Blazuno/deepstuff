@@ -38,10 +38,11 @@ end
 
 
 --noclip stuff
+local connection
 local function noclip(bool)
     local head, torso = chr:FindFirstChild("Head"), chr:FindFirstChild("Torso")
     if bool then
-        local connection = game:GetService("RunService").RenderStepped:Connect(function()
+        connection = game:GetService("RunService").RenderStepped:Connect(function()
             head.CanCollide = false
             torso.CanCollide = false 
         end)
@@ -90,6 +91,7 @@ local function delete_bonekeeper()
     spawn(function()
         while true do
             if game.Workspace.Thrown:FindFirstChild("BoneSpear") then
+                chr.Torso.Anchored = false
                 keypress(0x38)
                 wait(0.05)
                 keyrelease(0x38)
@@ -97,17 +99,23 @@ local function delete_bonekeeper()
                 local tween = fly_to(Vector3.new(-5798.708984375, 459.4010925292969, -6341.38037109375), 300)
                 wait(tween.TweenInfo.Time)
                 game.Workspace.Gravity = 196.2
-                chr.Torso.Anchored = false
                 return
             end
             wait(0.01)
         end
     end)
-    local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
-    chr.Torso.Anchored = false
-    tween = fly_to(pos, 300)
-    wait(tween.TweenInfo.Time)
-    chr.Torso.Anchored = true
+    while bonekeeper.Head do 
+        local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
+        chr.Torso.Anchored = false
+        tween = fly_to(pos, 300)
+        wait(tween.TweenInfo.Time)
+        chr.Torso.Anchored = true
+        wait(5)
+        chr.Torso.Anchored = false
+        fly_to(Vector3.new(-5573.736328125, 460.28863525390625, -6449.4453125), 300)
+        wait(3)
+    end
 end
 
+noclip(true)
 delete_bonekeeper()
