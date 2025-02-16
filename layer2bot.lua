@@ -88,32 +88,34 @@ local function delete_bonekeeper()
             break
         end 
     end
-    spawn(function()
-        while true do
-            if game.Workspace.Thrown:FindFirstChild("BoneSpear") then
-                chr.Torso.Anchored = false
-                keypress(0x38)
-                wait(0.05)
-                keyrelease(0x38)
-                tween:Cancel()
-                local tween = fly_to(Vector3.new(-5798.708984375, 459.4010925292969, -6341.38037109375), 200)
-                wait(tween.TweenInfo.Time)
-                game.Workspace.Gravity = 196.2
-                return
-            end
-            wait(0.01)
+    local co = coroutine.create(function()
+        while bonekeeper.Head do 
+            local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
+            chr.Torso.Anchored = false
+            tween = fly_to(pos, 200)
+            wait(tween.TweenInfo.Time)
+            chr.Torso.Anchored = true
+            wait(4)
+            chr.Torso.Anchored = false
+            fly_to(Vector3.new(-5573.736328125, 460.28863525390625, -6449.4453125), 100)
+            wait(3)
         end
     end)
-    while bonekeeper.Head do 
-        local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
-        chr.Torso.Anchored = false
-        tween = fly_to(pos, 200)
-        wait(tween.TweenInfo.Time)
-        chr.Torso.Anchored = true
-        wait(5)
-        chr.Torso.Anchored = false
-        fly_to(Vector3.new(-5573.736328125, 460.28863525390625, -6449.4453125), 200)
-        wait(3)
+    coroutine.resume(co)
+    while true do
+        if game.Workspace.Thrown:FindFirstChild("BoneSpear") then
+            coroutine.yield(co)
+            chr.Torso.Anchored = false
+            keypress(0x38)
+            wait(0.05)
+            keyrelease(0x38)
+            tween:Cancel()
+            local tween = fly_to(Vector3.new(-5798.708984375, 459.4010925292969, -6341.38037109375), 200)
+            wait(tween.TweenInfo.Time)
+            game.Workspace.Gravity = 196.2
+            return
+        end
+        wait(0.01)
     end
 end
 
