@@ -13,6 +13,7 @@ local positions = {
     Vector3.new(-4595.3955078125, 644.717529296875, -5156.9619140625)
 }
 
+
 -- get an array of items
 local function get_items_from_chest()
     local items = {}
@@ -78,6 +79,7 @@ local function delete_bonekeeper()
     local live = game.Workspace.Live
     local bonekeeper 
     local tween
+    local y_start 
     game.Workspace.Gravity = 0
     for _, part in pairs(live:GetChildren()) do
         if string.find(part.Name, "boneboy") then
@@ -101,8 +103,9 @@ local function delete_bonekeeper()
         end
     end)
     while bonekeeper do
-        local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.RightVector
-        pos = Vector3.new(pos.X, y_start, pos.Z)
+        local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
+        if not y_start then y_start = pos.Y end
+        pos = Vector3.new(pos.X, y_start, pos.Y)
         tween = fly_to(pos, 300)
         wait(tween.TweenInfo.Time)
     end
