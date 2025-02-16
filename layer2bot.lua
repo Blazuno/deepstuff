@@ -106,6 +106,7 @@ local function delete_bonekeeper()
     local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
     chr.Torso.Anchored = false
     tween = fly_to(pos, 300)
+    wait(tween.TweenInfo.Time)
     chr.Torso.Anchored = true
 end
 
