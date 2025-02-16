@@ -76,9 +76,6 @@ end
 
 
 --delete bonekeeper
-local thread = task.spawn(function()
---placeholder
-)
 local function delete_bonekeeper()
     local live = game.Workspace.Live
     local bonekeeper 
@@ -106,7 +103,9 @@ local function delete_bonekeeper()
     end)
     while true do
         if game.Workspace.Thrown:FindFirstChild("BoneSpear") then
-            task.cancel(thread)
+            if thread then
+                task.cancel(thread)
+            end
             chr.Torso.Anchored = false
             keypress(0x38)
             wait(0.05)
