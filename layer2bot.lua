@@ -103,13 +103,10 @@ local function delete_bonekeeper()
             wait(0.01)
         end
     end)
-    while bonekeeper do
-        local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
-        chr.Torso.Anchored = false
-        tween = fly_to(pos, 300)
-        chr.Torso.Anchored = true
-        wait(5)
-    end
+    local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
+    chr.Torso.Anchored = false
+    tween = fly_to(pos, 300)
+    chr.Torso.Anchored = true
 end
 
 delete_bonekeeper()
