@@ -89,17 +89,19 @@ local function delete_bonekeeper()
         end 
     end
     local co = coroutine.create(function()
-        while bonekeeper.Head do 
-            local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
-            chr.Torso.Anchored = false
-            tween = fly_to(pos, 200)
-            wait(tween.TweenInfo.Time)
-            chr.Torso.Anchored = true
-            wait(4)
-            chr.Torso.Anchored = false
-            fly_to(Vector3.new(-5573.736328125, 460.28863525390625, -6449.4453125), 100)
-            wait(3)
-        end
+        spawn(function()
+            while bonekeeper.Head do 
+                local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
+                chr.Torso.Anchored = false
+                tween = fly_to(pos, 200)
+                wait(tween.TweenInfo.Time)
+                chr.Torso.Anchored = true
+                wait(4)
+                chr.Torso.Anchored = false
+                fly_to(Vector3.new(-5573.736328125, 460.28863525390625, -6449.4453125), 100)
+                wait(3)
+            end
+        end)
     end)
     coroutine.resume(co)
     while true do
