@@ -104,8 +104,6 @@ local function delete_bonekeeper()
     end)
     while bonekeeper do
         local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
-        if not y_start then y_start = pos.Y end
-        pos = Vector3.new(pos.X, y_start, pos.Y)
         tween = fly_to(pos, 300)
         wait(tween.TweenInfo.Time)
     end
