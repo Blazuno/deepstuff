@@ -76,6 +76,9 @@ end
 
 
 --delete bonekeeper
+local thread = task.spawn(function()
+--placeholder
+)
 local function delete_bonekeeper()
     local live = game.Workspace.Live
     local bonekeeper 
@@ -88,7 +91,7 @@ local function delete_bonekeeper()
             break
         end 
     end
-    local thread = task.spawn(function()
+    thread = task.spawn(function()
         while bonekeeper.Head do 
             local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
             chr.Torso.Anchored = false
