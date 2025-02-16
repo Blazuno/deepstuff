@@ -53,6 +53,17 @@ local function noclip(bool)
     end
 end
 
+local function destroy_jars()
+    local destructibles = game.Workspace.Destructibles:GetChildren()
+    for _, jar in pairs(destructibles) do
+        if jar.Name == "BloodJar" and jar:FindFirstChild("AttachmentPart") then
+            fly_to(jar.Position, 200)
+            chr.Torso.Anchored = true
+            repeat mouse1press() until not jar
+            chr.Torso.Anchored = false
+        end
+    end
+end
 
 local function delete_chaser()
     --wip
@@ -110,6 +121,10 @@ local function delete_bonekeeper()
             keypress(0x38)
             wait(0.05)
             keyrelease(0x38)
+            wait(0.5)
+            keypress(0x38)
+            wait(0.05)
+            keyrelease(0x38)
             tween:Cancel()
             local tween = fly_to(Vector3.new(-5798.708984375, 459.4010925292969, -6341.38037109375), 200)
             wait(tween.TweenInfo.Time)
@@ -120,5 +135,7 @@ local function delete_bonekeeper()
     end
 end
 
+local 
+
 noclip(true)
-delete_bonekeeper()
+destroy_jars()
