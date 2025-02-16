@@ -91,8 +91,9 @@ local function delete_bonekeeper()
                 keypress(0x38)
                 wait(0.05)
                 keyrelease(0x38)
-                tween:Stop()
-                fly_to(Vector3.new(-5798.708984375, 459.4010925292969, -6341.38037109375), 300)
+                tween:Cancel()
+                local tween = fly_to(Vector3.new(-5798.708984375, 459.4010925292969, -6341.38037109375), 300)
+                wait(tween.TweenInfo.Time)
                 game.Workspace.Gravity = 196.2
                 return
             end
@@ -103,7 +104,6 @@ local function delete_bonekeeper()
         local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.RightVector * 40
         tween = fly_to(pos, 300)
         wait(tween.TweenInfo.Time)
-
     end
 end
 
