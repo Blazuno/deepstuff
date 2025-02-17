@@ -136,8 +136,8 @@ local function destroy_jars()
             local connection = jar.ChildRemoved:Connect(function()
                 next = true
             end)
-            connection:Disconnect()
             repeat mouse1press() wait(0.05) until next 
+            connection:Disconnect()
             print("finished breaking jar")
             chr.Torso.Anchored = false
         end
