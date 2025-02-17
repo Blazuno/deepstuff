@@ -53,17 +53,6 @@ local function noclip(bool)
     end
 end
 
-local function destroy_jars()
-    local destructibles = game.Workspace.Destructibles:GetChildren()
-    for _, jar in pairs(destructibles) do
-        if jar.Name == "BloodJar" and jar:FindFirstChild("AttachmentPart") then
-            fly_to(jar.Position, 200)
-            chr.Torso.Anchored = true
-            repeat mouse1press() until not jar
-            chr.Torso.Anchored = false
-        end
-    end
-end
 
 local function delete_chaser()
     --wip
@@ -135,7 +124,26 @@ local function delete_bonekeeper()
     end
 end
 
-local 
+
+local function destroy_jars()
+    local destructibles = game.Workspace.Destructibles:GetChildren()
+    for _, jar in pairs(destructibles) do
+        if jar.Name == "BloodJar" and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment") and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment"):FindFirstChild("JarLight") then
+            local tween = fly_to(jar.Part.Position, 200)
+            wait(tween.TweenInfo.Time)
+            chr.Torso.Anchored = true
+            local next = false
+            local connection = jar.ChildRemoved:Connect(function()
+                next = true
+            end)
+            connection:Disconnect()
+            repeat mouse1press() wait(0.05) until next 
+            print("finished breaking jar")
+            chr.Torso.Anchored = false
+        end
+    end
+end
+
 
 noclip(true)
 destroy_jars()
