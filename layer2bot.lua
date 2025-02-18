@@ -169,8 +169,8 @@ local function destroy_jars()
     end
 end
 
-
+local chaser = game.Workspace.Live:FindFirstChild(".chaser")
 noclip(true)
 destroy_jars()
-wait(1.5)
+repeat wait() until chaser.Torso.Position.Y <= 645
 delete_chaser()
