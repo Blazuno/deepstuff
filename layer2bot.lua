@@ -130,7 +130,8 @@ local function destroy_jars()
     local destructibles = game.Workspace.Destructibles:GetChildren()
     for _, jar in pairs(destructibles) do
         if jar.Name == "BloodJar" and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment") and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment"):FindFirstChild("JarLight") then
-            local tween = fly_to(jar.Part.Position + Vector3.new(5,0,5), 200, jar.Part.Position)
+            local look = Vector3.new(jar.Part.X, 0, jar.Part.Z)
+            local tween = fly_to(jar.Part.Position + Vector3.new(5,0,5), 200, look)
             wait(tween.TweenInfo.Time)
             chr.Torso.Anchored = true
             local next = false
@@ -148,3 +149,5 @@ end
 
 noclip(true)
 destroy_jars()
+
+setclipboard(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.LookVector)
