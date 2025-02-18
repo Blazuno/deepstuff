@@ -136,7 +136,6 @@ local function destroy_jars()
                 while not next do
                     local tween = fly_to(jar.Part.Position + Vector3.new(3,0,3), 200, look)
                     wait(tween.TweenInfo.Time)
-                    chr.Torso.Anchored = true
                 end
             end)
             local connection = jar.ChildRemoved:Connect(function()
@@ -145,7 +144,6 @@ local function destroy_jars()
             repeat mouse1press() wait(0.05) until next 
             connection:Disconnect()
             print("finished breaking jar")
-            chr.Torso.Anchored = false
         end
     end
 end
