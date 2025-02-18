@@ -3,6 +3,9 @@
 --localized vars
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
+local VIM = game:GetService("VirtualInputManager")
+
+
 local positions = {
     Vector3.new(-5460.83740234375, 425.9949951171875, -5136.78857421875),
     Vector3.new(-5408.3291015625, 279.205322265625, -4993.06640625),
@@ -13,6 +16,11 @@ local positions = {
     Vector3.new(-4595.3955078125, 644.717529296875, -5156.9619140625)
 }
 
+local function mb_1()
+    VIM:SendMouseButtonEvent(mouse.X, mouse.Y, 1, true, game, 1)
+    task.wait()
+    VIM:SendMouseButtonEvent(mouse.X, mouse.Y, 1, false, game, 1)
+end
 
 -- get an array of items
 local function get_items_from_chest()
@@ -141,7 +149,7 @@ local function destroy_jars()
             local connection = jar.ChildRemoved:Connect(function()
                 next = true
             end)
-            repeat mouse1press() wait(0.05) until next 
+            repeat mb_1() wait(0.05) until next 
             connection:Disconnect()
             print("finished breaking jar")
         end
@@ -151,3 +159,5 @@ end
 
 noclip(true)
 destroy_jars()
+
+setclipboard(decompile(game.Players.LocalPlayer.Character.CharacterHandler.InputClient))
