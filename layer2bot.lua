@@ -226,7 +226,7 @@ local function layer2bot()
     wait(0.05)
     VIM:SendKeyEvent(false, 49, false, game)
     game.Workspace.Gravity = 196.2
-    repeat wait until chaser.Torso.Position.Y >= 655
+    repeat wait() until chaser.Torso.Position.Y >= 655
     wait(1)
     destroy_jars()
     repeat wait() until chaser.Torso.Position.Y <= 645
