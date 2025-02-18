@@ -155,7 +155,7 @@ local function destroy_jars()
             local next = false
             spawn(function()
                 while not next do
-                    local tween = fly_to(jar.Part.Position + Vector3.new(3,0,3), 200, look)
+                    local tween = fly_to(jar.Part.Position + Vector3.new(7,0,7), 200, look)
                     wait(tween.TweenInfo.Time)
                 end
             end)
