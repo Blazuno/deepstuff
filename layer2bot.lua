@@ -69,8 +69,8 @@ local function fly_to(goal, speed, look)
         Enum.EasingStyle.Linear,
         Enum.EasingDirection.Out
     )
-    if look then goal = CFrame.new(goal, look) end
-    local tween = ts:Create(chr.HumanoidRootPart, ts_config, {CFrame = CFrame.new(goal)})
+    if look then goal = CFrame.new(goal, look) else goal = CFrame.new(goal) end
+    local tween = ts:Create(chr.HumanoidRootPart, ts_config, {CFrame = goal})
     tween:Play()
     return tween
 end
