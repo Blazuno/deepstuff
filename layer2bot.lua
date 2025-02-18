@@ -129,8 +129,9 @@ local function destroy_jars()
     local destructibles = game.Workspace.Destructibles:GetChildren()
     for _, jar in pairs(destructibles) do
         if jar.Name == "BloodJar" and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment") and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment"):FindFirstChild("JarLight") then
-            local tween = fly_to(jar.Part.Position, 200)
+            local tween = fly_to(jar.Part.Position + Vector3.new(5,0,5), 200)
             wait(tween.TweenInfo.Time)
+            chr.HumanoidRootPart.CFrame = CFrame.lookAt(chr.HumanoidRootPart.Position, jar.Part.Position)
             chr.Torso.Anchored = true
             local next = false
             local connection = jar.ChildRemoved:Connect(function()
