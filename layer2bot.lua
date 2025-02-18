@@ -65,19 +65,7 @@ local function noclip(bool)
 end
 
 
-local function delete_chaser()
-    local chaser = game.Workspace.Live:FindFirstChild(".chaser")
-    local torso = chaser.Torso
-    local tween = fly_to(chaser.Torso.Position + Vector3.new(5,0,5), 100, chaser.Torso.Position)
-    wait(tween.TweenInfo.Time)
-    wait(0.5)
-    cast_remote:FireServer(galetrap)
-    wait(1.5)
-    keypress(0x38)
-    wait(0.05)
-    keyrelease(0x38)
 
-end
 
 --
 local function fly_to(goal, speed, look)
@@ -95,6 +83,19 @@ local function fly_to(goal, speed, look)
     return tween
 end
 
+--delete chaser
+local function delete_chaser()
+    local chaser = game.Workspace.Live:FindFirstChild(".chaser")
+    local torso = chaser.Torso
+    local tween = fly_to(chaser.Torso.Position + Vector3.new(5,0,5), 100, chaser.Torso.Position)
+    wait(tween.TweenInfo.Time)
+    wait(0.5)
+    cast_remote:FireServer(galetrap)
+    wait(1.5)
+    keypress(0x38)
+    wait(0.05)
+    keyrelease(0x38)
+end
 
 --delete bonekeeper
 local function delete_bonekeeper()
