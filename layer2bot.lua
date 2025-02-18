@@ -8,13 +8,23 @@ local galetrap = game.Players.LocalPlayer.Backpack:FindFirstChild("Mantra:TrapWi
 local cast_remote = game.Players.LocalPlayer.Character.CharacterHandler.Requests.ActivateMantra
 
 local positions = {
-    Vector3.new(-5460.83740234375, 425.9949951171875, -5136.78857421875),
+    Vector3.new(-4508.375, 465.4999694824219, -5937.01904296875), -- orb
+    Vector3.new(-4508.375, 465.4999694824219, -5937.01904296875), -- door
+    Vector3.new(-5341.36962890625, 354.25225830078125, -5802.22412109375),
+    Vector3.new(-5493.36669921875, 383.2544250488281, -5819.6513671875),
+    Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
+    Vector3.new(-5983.35693359375, 443.8338623046875, -6298.9658203125),
+    Vector3.new(-5746.16064453125, 459.4011535644531, -6364.5498046875), -- bonekeeper
+    Vector3.new(-5557.0380859375, 529.257568359375, -6477.33984375),-- generator
+    Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
+    Vector3.new(-5452.01025390625, 353.6543884277344, -5654.0517578125),
+    Vector3.new(-5460.83740234375, 425.9949951171875, -5136.78857421875), --firfire
     Vector3.new(-5408.3291015625, 279.205322265625, -4993.06640625),
     Vector3.new(-5365.28369140625, 277.34478759765625, -4763.12451171875),
     Vector3.new(-5232.18115234375, 203.39727783203125, -4642.83349609375),
     Vector3.new(-4804.396484375, 293.2510986328125, -4554.693359375),
     Vector3.new(-4653.1484375, 475.3758850097656, -4986.79833984375),
-    Vector3.new(-4595.3955078125, 644.717529296875, -5156.9619140625)
+    Vector3.new(-4595.3955078125, 644.717529296875, -5156.9619140625) -- chaser
 }
 
 local mouse = game.Players.LocalPlayer:GetMouse()
@@ -102,14 +112,14 @@ local function delete_bonekeeper()
     local live = game.Workspace.Live
     local bonekeeper 
     local tween
-    local y_start 
-    game.Workspace.Gravity = 0
-    for _, part in pairs(live:GetChildren()) do
-        if string.find(part.Name, "boneboy") then
-            bonekeeper = part
-            break
-        end 
-    end
+    repeat
+        for _, part in pairs(live:GetChildren()) do
+            if string.find(part.Name, "boneboy") then
+                bonekeeper = part
+                break
+            end 
+        end
+    until bonekeeper 
     local thread = task.spawn(function()
         while bonekeeper.Head do 
             local pos = bonekeeper.Head.Position + bonekeeper.Head.CFrame.UpVector * 40
@@ -129,17 +139,16 @@ local function delete_bonekeeper()
                 task.cancel(thread)
             end
             chr.Torso.Anchored = false
-            keypress(0x38)
+            VIM:SendKeyEvent(true, 56, false, game)
             wait(0.05)
-            keyrelease(0x38)
+            VIM:SendKeyEvent(false, 56, false, game)
             wait(0.5)
-            keypress(0x38)
+            VIM:SendKeyEvent(true, 56, false, game)
             wait(0.05)
-            keyrelease(0x38)
+            VIM:SendKeyEvent(false, 56, false, game)
             tween:Cancel()
             local tween = fly_to(Vector3.new(-5798.708984375, 459.4010925292969, -6341.38037109375), 200)
             wait(tween.TweenInfo.Time)
-            game.Workspace.Gravity = 196.2
             return
         end
         wait(0.01)
@@ -169,8 +178,61 @@ local function destroy_jars()
     end
 end
 
-local chaser = game.Workspace.Live:FindFirstChild(".chaser")
-noclip(true)
-destroy_jars()
-repeat wait() until chaser.Torso.Position.Y <= 645
-delete_chaser()
+--main product
+local function layer2bot()
+    noclip(true)
+    local chaser = game.Workspace.Live:FindFirstChild(".chaser")
+    game.Workspace.Gravity = 0
+    for _, point in pairs(positions) do
+        local tween = fly_to(point, 250)
+        wait(tween.TweenInfo.Time)
+        if _ == 1 or _ == 2 or _ == 11  then
+            wait(0.5)
+            VIM:SendKeyEvent(true, 101, false, game)
+            wait(0.05)
+            VIM:SendKeyEvent(false, 101, false, game)
+            wait(0.5)
+            VIM:SendKeyEvent(true, 49, false, game)
+            wait(0.05)
+            VIM:SendKeyEvent(false, 49, false, game)
+
+        elseif _ == 8 then
+            wait(0.5)
+            VIM:SendKeyEvent(true, 101, false, game)
+            wait(0.05)
+            VIM:SendKeyEvent(false, 101, false, game)
+            wait(0.5)
+            VIM:SendKeyEvent(true, 49, false, game)
+            wait(0.05)
+            VIM:SendKeyEvent(false, 49, false, game)
+            wait(0.5)
+            VIM:SendKeyEvent(true, 49, false, game)
+            wait(0.05)
+            VIM:SendKeyEvent(false, 49, false, game)
+        elseif _ == 7 then 
+            delete_bonekeeper()
+        end
+    end
+    wait(1.5)
+    VIM:SendKeyEvent(true, 49, false, game)
+    wait(0.05)
+    VIM:SendKeyEvent(false, 49, false, game)
+    wait(0.5)
+    VIM:SendKeyEvent(true, 101, false, game)
+    wait(0.05)
+    VIM:SendKeyEvent(false, 101, false, game)
+    wait(0.5)
+    VIM:SendKeyEvent(true, 49, false, game)
+    wait(0.05)
+    VIM:SendKeyEvent(false, 49, false, game)
+    game.Workspace.Gravity = 196.2
+    repeat wait until chaser.Torso.Position.Y >= 655
+    wait(1)
+    destroy_jars()
+    repeat wait() until chaser.Torso.Position.Y <= 645
+    delete_chaser()
+    local tween = fly_to(2743.15673828125, 367.6423645019531, -5331.54150390625, 225)
+    wait(tween.TweenInfo.Time)
+end
+
+layer2bot()
