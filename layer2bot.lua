@@ -4,7 +4,8 @@
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
 local VIM = game:GetService("VirtualInputManager")
-
+local galetrap = game.Players.LocalPlayer.Backpack:FindFirstChild("Mantra:TrapWind{{Galetrap}}")
+local cast_remote = game.Players.LocalPlayer.Character.CharacterHandler.Requests.ActivateMantra
 
 local positions = {
     Vector3.new(-5460.83740234375, 425.9949951171875, -5136.78857421875),
@@ -16,11 +17,13 @@ local positions = {
     Vector3.new(-4595.3955078125, 644.717529296875, -5156.9619140625)
 }
 
+local mouse = game.Players.LocalPlayer:GetMouse()
 local function mb_1()
-    VIM:SendMouseButtonEvent(mouse.X, mouse.Y, 1, true, game, 1)
-    task.wait()
-    VIM:SendMouseButtonEvent(mouse.X, mouse.Y, 1, false, game, 1)
+    VIM:SendMouseButtonEvent(mouse.X, mouse.Y, 0, true, game, 1)
+    task.wait(0.05)
+    VIM:SendMouseButtonEvent(mouse.X, mouse.Y, 0, false, game, 1)
 end
+
 
 -- get an array of items
 local function get_items_from_chest()
@@ -63,8 +66,17 @@ end
 
 
 local function delete_chaser()
-    --wip
-    wait(1)
+    local chaser = game.Workspace.Live:FindFirstChild(".chaser")
+    local torso = chaser.Torso
+    local tween = fly_to(chaser.Torso.Position + Vector3.new(5,0,5), 100, chaser.Torso.Position)
+    wait(tween.TweenInfo.Time)
+    wait(0.5)
+    cast_remote:FireServer(galetrap)
+    wait(1.5)
+    keypress(0x38)
+    wait(0.05)
+    keyrelease(0x38)
+
 end
 
 --
@@ -159,5 +171,5 @@ end
 
 noclip(true)
 destroy_jars()
-
-setclipboard(decompile(game.Players.LocalPlayer.Character.CharacterHandler.InputClient))
+wait(1.5)
+delete_chaser()
