@@ -131,7 +131,7 @@ local function destroy_jars()
     for _, jar in pairs(destructibles) do
         if jar.Name == "BloodJar" and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment") and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment"):FindFirstChild("JarLight") then
             local look = Vector3.new(jar.Part.Position.X, chr.HumanoidRootPart.Position.Y, jar.Part.Position.Z)
-            local tween = fly_to(jar.Part.Position + Vector3.new(5,0,5), 200, look)
+            local tween = fly_to(jar.Part.Position + Vector3.new(3,0,3), 200, look)
             wait(tween.TweenInfo.Time)
             chr.Torso.Anchored = true
             local next = false
