@@ -3,6 +3,15 @@ queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepst
 repeat wait() until game:IsLoaded()
 wait(5)
 local VIM = game:GetService("VirtualInputManager")
+spawn(function()
+    local start_time = os.clock()
+    repeat wait() until os.clock() - start_time >= 300
+    repeat
+        wait(5)
+        game.ReplicatedStorage.Requests.ReturnToMenu:FireServer(nil)
+    until false
+end)
+
 
 local function mb_1()
     VIM:SendMouseButtonEvent(game.Workspace.CurrentCamera.ViewportSize.X/2, game.Workspace.CurrentCamera.ViewportSize.Y/2, 0, true, game, 1)
@@ -158,7 +167,7 @@ local function delete_bonekeeper()
                 wait(tween.TweenInfo.Time)
             end
             chr.Torso.Anchored = true
-            wait(4)
+            wait(2)
             chr.Torso.Anchored = false
             local tween = fly_to(Vector3.new(-5698.673828125, 496.2106628417969, -6404.46630859375), 100)
             wait(tween.TweenInfo.Time)
