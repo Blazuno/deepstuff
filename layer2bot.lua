@@ -1,5 +1,7 @@
 -- heeelllppp
 queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepstuff/refs/heads/main/layer2bot.lua"))
+repeat wait() until game:IsLoaded()
+wait(5)
 if game.PlaceId == 4111023553 then
     game.ReplicatedStorage.Requests.StartMenu.Start:FireServer("A", {})
     wait(3)
