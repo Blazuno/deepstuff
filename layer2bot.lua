@@ -1,5 +1,9 @@
 -- heeelllppp
-
+queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepstuff/refs/heads/main/layer2bot.lua"))
+if game.PlaceId == 4111023553 then
+    game.ReplicatedStorage.Requests.StartMenu.Start:FireServer("A", {})
+    wait(3)
+end
 --localized vars
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
@@ -193,10 +197,8 @@ end
 
 --main product
 local function layer2bot()
-    repeat wait() until game:IsLoaded()
-    if game.PlaceId == 4111023553 then
-        game.ReplicatedStorage.Requests.StartMenu.Start:FireServer("A", {})
-    elseif game.PlaceId == 8668476218 then
+    repeat wait() until game:IsLoaded()   
+    if game.PlaceId == 8668476218 then
         mb_1()
         wait(15)
         noclip(true)
@@ -280,7 +282,6 @@ local function layer2bot()
             end
         end
         wait(5)
-        queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepstuff/refs/heads/main/layer2bot.lua"))
         game.ReplicatedStorage.Requests.ReturnToMenu:FireServer(nil)
     end
 end
