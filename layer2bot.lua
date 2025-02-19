@@ -148,7 +148,7 @@ local function delete_bonekeeper()
         end
         wait()
     until bonekeeper 
-    wait(2)
+    wait(1)
     local thread = task.spawn(function()
         while bonekeeper.Head do 
             local pos = bonekeeper.Head.Position + Vector3.new(0, 35, 0)
