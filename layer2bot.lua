@@ -252,6 +252,8 @@ local function layer2bot()
                 wait(6)
             end
         end
+        local chaser = game.Workspace.Live:FindFirstChild(".chaser")
+        chr.HumanoidRootPart.CFrame = CFrame.new(chr.HumanoidRootPart.Position, chaser.HumanoidRootPart.Position)
         wait(1.5)
         VIM:SendKeyEvent(true, 49, false, game)
         wait(0.05)
@@ -264,8 +266,9 @@ local function layer2bot()
         VIM:SendKeyEvent(true, 49, false, game)
         wait(0.05)
         VIM:SendKeyEvent(false, 49, false, game)
+        wait(0.6)
+        mb_1()
         chr.HumanoidRootPart.Anchored = false
-        local chaser = game.Workspace.Live:FindFirstChild(".chaser")
         repeat wait() until chaser.Torso.Position.Y >= 655
         wait(1)
         destroy_jars()
