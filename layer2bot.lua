@@ -285,4 +285,4 @@ local function layer2bot()
     end
 end
 
-game:GetService("TeleportService"):TeleportAsync(8668476218, {game.Players.LocalPlayer})
+layer2bot()
