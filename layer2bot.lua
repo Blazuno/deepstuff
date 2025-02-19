@@ -14,6 +14,7 @@ if game.PlaceId == 4111023553 then
     game.ReplicatedStorage.Requests.StartMenu.Start:FireServer("A", {})
     wait(3)
 elseif game.PlaceId == 8668476218 then 
+    wait(7)
     mb_1()
     wait(25)
 end
@@ -150,7 +151,7 @@ local function delete_bonekeeper()
     wait(2)
     local thread = task.spawn(function()
         while bonekeeper.Head do 
-            local pos = bonekeeper.Head.Position + Vector3.new(0, 40, 0)
+            local pos = bonekeeper.Head.Position + Vector3.new(0, 35, 0)
             chr.Torso.Anchored = false
             if pos.Y >= 0 then 
                 local tween = fly_to(pos, 200)
