@@ -15,7 +15,7 @@ if game.PlaceId == 4111023553 then
     wait(3)
 elseif game.PlaceId == 8668476218 then 
     mb_1()
-    wait(15)
+    wait(25)
 end
 
 --localized vars
