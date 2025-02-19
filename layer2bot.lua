@@ -152,8 +152,10 @@ local function delete_bonekeeper()
         while bonekeeper.Head do 
             local pos = bonekeeper.Head.Position + Vector3.new(0, 40, 0)
             chr.Torso.Anchored = false
-            local tween = fly_to(pos, 200)
-            wait(tween.TweenInfo.Time)
+            if pos.Y >= 0 then 
+                local tween = fly_to(pos, 200)
+                wait(tween.TweenInfo.Time)
+            end
             chr.Torso.Anchored = true
             wait(4)
             chr.Torso.Anchored = false
