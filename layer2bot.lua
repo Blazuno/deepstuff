@@ -48,8 +48,7 @@ local positions = {
 local items = {
     "Weathered Timepiece",
     "Bloodforged Crown",
-    "Bloodfouler",
-    "Bloodless Gem"
+    "Bloodfouler"
 }
 
 
