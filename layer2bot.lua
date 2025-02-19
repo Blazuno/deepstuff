@@ -2,16 +2,28 @@
 queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepstuff/refs/heads/main/layer2bot.lua"))
 repeat wait() until game:IsLoaded()
 wait(5)
+
+local function mb_1()
+    VIM:SendMouseButtonEvent(game.Workspace.CurrentCamera.ViewportSize.X/2, game.Workspace.CurrentCamera.ViewportSize.Y/2, 0, true, game, 1)
+    task.wait(0.05)
+    VIM:SendMouseButtonEvent(game.Workspace.CurrentCamera.ViewportSize.X/2, game.Workspace.CurrentCamera.ViewportSize.Y/2, 0, false, game, 1)
+end
+
 if game.PlaceId == 4111023553 then
     game.ReplicatedStorage.Requests.StartMenu.Start:FireServer("A", {})
     wait(3)
+elseif game.PlaceId == 8668476218 then 
+    mb_1()
+    wait(15)
 end
+
 --localized vars
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
 local VIM = game:GetService("VirtualInputManager")
-local galetrap = game.Players.LocalPlayer.Backpack:FindFirstChild("Mantra:TrapWind{{Galetrap}}")
-local cast_remote = game.Players.LocalPlayer.Character.CharacterHandler.Requests.ActivateMantra
+local galetrap = game.Players.LocalPlayer.Backpack:WaitForChild("Mantra:TrapWind{{Galetrap}}")
+local requests = game.Players.LocalPlayer.Character.CharacterHandler:WaitForChild("Requests")
+local cast_remote = requests:WaitForChild("ActivateMantra")
 
 local positions = {
     Vector3.new(-4508.375, 465.4999694824219, -5937.01904296875), -- orb
@@ -41,11 +53,6 @@ local items = {
 }
 
 
-local function mb_1()
-    VIM:SendMouseButtonEvent(game.Workspace.CurrentCamera.ViewportSize.X/2, game.Workspace.CurrentCamera.ViewportSize.Y/2, 0, true, game, 1)
-    task.wait(0.05)
-    VIM:SendMouseButtonEvent(game.Workspace.CurrentCamera.ViewportSize.X/2, game.Workspace.CurrentCamera.ViewportSize.Y/2, 0, false, game, 1)
-end
 
 
 -- get an array of items
