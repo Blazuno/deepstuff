@@ -2,6 +2,7 @@
 queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepstuff/refs/heads/main/layer2bot.lua"))
 repeat wait() until game:IsLoaded()
 wait(5)
+local VIM = game:GetService("VirtualInputManager")
 
 local function mb_1()
     VIM:SendMouseButtonEvent(game.Workspace.CurrentCamera.ViewportSize.X/2, game.Workspace.CurrentCamera.ViewportSize.Y/2, 0, true, game, 1)
@@ -20,7 +21,6 @@ end
 --localized vars
 local plr = game.Players.LocalPlayer
 local chr = plr.Character
-local VIM = game:GetService("VirtualInputManager")
 local galetrap = game.Players.LocalPlayer.Backpack:WaitForChild("Mantra:TrapWind{{Galetrap}}")
 local requests = game.Players.LocalPlayer.Character.CharacterHandler:WaitForChild("Requests")
 local cast_remote = requests:WaitForChild("ActivateMantra")
