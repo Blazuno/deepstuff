@@ -295,8 +295,10 @@ local function layer2bot()
                 end
             end
         end
-        wait(5)
-        game.ReplicatedStorage.Requests.ReturnToMenu:FireServer(nil)
+        repeat
+            wait(5)
+            game.ReplicatedStorage.Requests.ReturnToMenu:FireServer(nil)
+        until false
     end
 end
 
