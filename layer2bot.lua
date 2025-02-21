@@ -337,7 +337,7 @@ local function layer2bot()
         local chest_loot = get_items_from_chest()
         print("Chest loot:", chest_loot)
         for _, item in pairs(chest_loot) do
-            for i, wl_item in pairs(_G.items) do 
+            for i, wl_item in pairs(items) do 
                 if string.find(item, wl_item) then
                     print("trying to loot:", item)
                     loot_specific_item(item)
