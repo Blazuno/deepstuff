@@ -163,8 +163,9 @@ local function better_fly(goal, speed, look)
         end
     end)
     wait(tween.TweenInfo.Time)
-    if failed then return better_fly(goal, speed, look) end
     task.cancel(thread)
+    if (chr.HumanoidRootPart.Position - goal).Magnitude >=10 then failed = true end
+    if failed then return better_fly(goal, speed, look) end
 end
 
 --delete chaser
@@ -273,7 +274,7 @@ local function layer2bot()
     if game.PlaceId == 8668476218 then
         noclip(true)
         nofall()
-        wait(1)
+        wait(2)
         VIM:SendKeyEvent(true, 49, false, game)
         wait(0.05)
         VIM:SendKeyEvent(false, 49, false, game)
