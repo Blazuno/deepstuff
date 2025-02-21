@@ -4,8 +4,10 @@ print("Blazehub is back babyyyyyyy, l2 bot go!")
 queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepstuff/refs/heads/main/layer2bot.lua"))
 repeat wait() until game:IsLoaded()
 wait(5)
+local settings = game:GetService("HttpService"):JSONDecode(readfile("blazehub.txt"))
 local VIM = game:GetService("VirtualInputManager")
-local items = _G.items
+local slot = settings.slot
+local items = settings.items
 
 local function mb_1()
     VIM:SendMouseButtonEvent(game.Workspace.CurrentCamera.ViewportSize.X/2, game.Workspace.CurrentCamera.ViewportSize.Y/2, 0, true, game, 1)
@@ -15,7 +17,7 @@ end
 
 if game.PlaceId == 4111023553 then
     repeat
-        game.ReplicatedStorage.Requests.StartMenu.Start:FireServer(_G.slot, {})
+        game.ReplicatedStorage.Requests.StartMenu.Start:FireServer(slot, {})
         wait(3)
     until false
 elseif game.PlaceId == 8668476218 then 
@@ -331,7 +333,7 @@ local function layer2bot()
         local chest_loot = get_items_from_chest()
         print("Chest loot:", chest_loot)
         for _, item in pairs(chest_loot) do
-            for i, wl_item in pairs(items) do 
+            for i, wl_item in pairs(_G.items) do 
                 if string.find(item, wl_item) then
                     print("trying to loot:", item)
                     loot_specific_item(item)
