@@ -177,6 +177,7 @@ local function delete_chaser()
     if chaser then 
         fly_to(Vector3.new(-4448.94384765625, 641.6946411132812, -5152.5166015625), 200)
         repeat wait() until not chaser
+        print("Chaser dead")
     end
 end
 
