@@ -197,7 +197,7 @@ local function delete_bonekeeper()
     local point2 = Vector3.new(-5880.5888671875, 459.4011535644531, -6312.36376953125)
     local point3 = Vector3.new(-5808.74853515625, 375.5366516113281, -6352.9912109375)
     wait(0.7)
-    chr.HumanoidRootPart.CFrame = CFrame.new(boy.HumanoidRootPart.Position + boy.HumanoidRootPart.CFrame.LookVector * Vector3.new(1,0,1) * 20, boy.HumanoidRootPart.Position)
+    chr.HumanoidRootPart.CFrame = CFrame.new(boy.HumanoidRootPart.Position + boy.HumanoidRootPart.CFrame.LookVector * Vector3.new(1,0,1) * 10, boy.HumanoidRootPart.Position)
     wait(0.1)
     VIM:SendKeyEvent(true, 114, false, game)
     wait(0.05)
@@ -220,17 +220,19 @@ local function delete_bonekeeper()
         local switch = false
         while boy do
             wait()
-            if (boy.HumanoidRootPart.Position - chr.HumanoidRootPart.Position).Magnitude <= 35 then
-                fly_to(point3, 225)
-                wait(2)
-                if switch then
-                    fly_to(point1, 225)
-                    switch = false
-                else
-                    fly_to(point2, 225)
-                    switch = true
+            pcall(function()
+                if (boy.HumanoidRootPart.Position - chr.HumanoidRootPart.Position).Magnitude <= 35 then
+                    fly_to(point3, 225)
+                    wait(2)
+                    if switch then
+                        fly_to(point1, 225)
+                        switch = false
+                    else
+                        fly_to(point2, 225)
+                        switch = true
+                    end
                 end
-            end
+            end)
         end
     end
 end
