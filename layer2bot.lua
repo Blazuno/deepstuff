@@ -158,6 +158,7 @@ local function better_fly(goal, speed, look)
     end)
     wait(tween.TweenInfo.Time)
     if failed then return better_fly(goal, speed, look) end
+    task.cancel(thread)
 end
 
 --delete chaser
@@ -172,16 +173,11 @@ local function delete_chaser()
     VIM:SendMouseMoveEvent(mouse_pos.X, mouse_pos.Y, game)
     wait(0.05)
     cast_remote:FireServer(galetrap)
-    local trap
-    repeat trap = game.Workspace.Thrown:FindFirstChild("WindTrap") wait() until trap
-    repeat wait() until trap:FindFirstChild("Weld")
-    repeat
-        trap.Hitbox.CFrame = chr.HumanoidRootPart.CFrame
-        chaser.HumanoidRootPart.CFrame = CFrame.new(0, -20000, 0)
-        wait()
-    until not trap
-    wait(1)
-    
+    wait(2)
+    if chaser then 
+        fly_to(Vector3.new(-4448.94384765625, 641.6946411132812, -5152.5166015625), 200)
+        repeat wait() until not chaser
+    end
 end
 
 
