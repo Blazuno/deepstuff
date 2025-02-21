@@ -52,7 +52,7 @@ local positions = {
     Vector3.new(-5493.36669921875, 383.2544250488281, -5819.6513671875),
     Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
     Vector3.new(-5983.35693359375, 443.8338623046875, -6298.9658203125),
-    Vector3.new(-5790.96044921875, 459.401123046875, -6343.06396484375), -- bonekeeper
+    Vector3.new(-5809.5673828125, 459.40118408203125, -6336.12109375), -- bonekeeper
     Vector3.new(-5557.0380859375, 529.257568359375, -6477.33984375),-- generator
     Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
     Vector3.new(-5452.01025390625, 353.6543884277344, -5654.0517578125),
@@ -172,7 +172,7 @@ local function delete_chaser()
     local torso = chaser.Torso
     local tween = fly_to(chaser.Torso.Position + Vector3.new(5,0,5), 100, chaser.Torso.Position)
     game.Workspace.Thrown.ChildAdded:Connect(function(c)
-        if c.Name == "PerilousAttack" or c.Name == "SpikeAttackEff" then 
+        if c.Name == "PerilousAttack" or c.Name == "SpikeStabEff" then 
             wait(0.1)
             VIM:SendKeyEvent(true, 113, false, game)
             wait(0.05)
@@ -253,7 +253,7 @@ local function destroy_jars()
             local next = false
             spawn(function()
                 while not next do
-                    local tween = fly_to(jar.Part.Position + Vector3.new(7,0,7), 200, look)
+                    local tween = fly_to(jar.Part.Position + Vector3.new(4,0,4), 200, look)
                     wait(tween.TweenInfo.Time)
                 end
             end)
