@@ -117,7 +117,6 @@ local function nofall()
             return oldfs(...)
         end
     end))
-
 end
 
 
@@ -157,7 +156,7 @@ local function better_fly(goal, speed, look)
         end
     end)
     wait(tween.TweenInfo.Time)
-    if failed then return better_fly(goal, speed, look)
+    if failed then return better_fly(goal, speed, look) end
 end
 
 --delete chaser
