@@ -175,7 +175,7 @@ local function delete_chaser()
     local tween = fly_to(chaser.Torso.Position + Vector3.new(5,0,5), 100, chaser.Torso.Position)
     game.Workspace.Thrown.ChildAdded:Connect(function(c)
         if c.Name == "PerilousAttack" or c.Name == "SpikeStabEff" then 
-            wait(0.3)
+            wait(0.5)
             VIM:SendKeyEvent(true, 113, false, game)
             wait(0.05)
             VIM:SendKeyEvent(false, 113, false, game)
