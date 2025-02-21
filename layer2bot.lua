@@ -53,7 +53,7 @@ local positions = {
     Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
     Vector3.new(-5983.35693359375, 443.8338623046875, -6298.9658203125),
     Vector3.new(-5790.96044921875, 459.401123046875, -6343.06396484375), -- pre bonekeeper
-    Vector3.new(-5809.5673828125, 459.40118408203125, -6336.12109375), -- bonekeeper
+    Vector3.new(-5790.96044921875, 459.401123046875, -6343.06396484375), -- bonekeeper
     Vector3.new(-5557.0380859375, 529.257568359375, -6477.33984375),-- generator
     Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
     Vector3.new(-5452.01025390625, 353.6543884277344, -5654.0517578125),
@@ -206,7 +206,6 @@ local function delete_bonekeeper()
     local point3 = Vector3.new(-5808.74853515625, 375.5366516113281, -6352.9912109375)
     wait(0.7)
     chr.HumanoidRootPart.CFrame = CFrame.new(boy.HumanoidRootPart.Position + boy.HumanoidRootPart.CFrame.LookVector * Vector3.new(1,0,1) * 10, boy.HumanoidRootPart.Position)
-    wait(0.1)
     VIM:SendKeyEvent(true, 114, false, game)
     wait(0.05)
     VIM:SendKeyEvent(false, 114, false, game)
@@ -274,6 +273,7 @@ local function layer2bot()
     if game.PlaceId == 8668476218 then
         noclip(true)
         nofall()
+        wait(1)
         VIM:SendKeyEvent(true, 49, false, game)
         wait(0.05)
         VIM:SendKeyEvent(false, 49, false, game)
