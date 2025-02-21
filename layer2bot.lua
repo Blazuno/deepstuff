@@ -52,6 +52,7 @@ local positions = {
     Vector3.new(-5493.36669921875, 383.2544250488281, -5819.6513671875),
     Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
     Vector3.new(-5983.35693359375, 443.8338623046875, -6298.9658203125),
+    Vector3.new(-5790.96044921875, 459.401123046875, -6343.06396484375), -- pre bonekeeper
     Vector3.new(-5809.5673828125, 459.40118408203125, -6336.12109375), -- bonekeeper
     Vector3.new(-5557.0380859375, 529.257568359375, -6477.33984375),-- generator
     Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
@@ -279,7 +280,7 @@ local function layer2bot()
         chr.HumanoidRootPart.Anchored = true
         for _, point in pairs(positions) do
             better_fly(point, 250)
-            if _ == 1 or _ == 2 or _ == 11  then
+            if _ == 1 or _ == 2 or _ == 12  then
                 if _ == 2 then 
                     game.Workspace.CurrentCamera.CFrame = CFrame.lookAt(game.Workspace.CurrentCamera.CFrame.Position, Vector3.new(-5002.71533203125, 376.4448547363281, -5825.50927734375))
                 end
@@ -292,7 +293,7 @@ local function layer2bot()
                 wait(0.05)
                 VIM:SendKeyEvent(false, 49, false, game)
 
-            elseif _ == 8 then
+            elseif _ == 9 then
                 wait(1)
                 VIM:SendKeyEvent(true, 101, false, game)
                 wait(0.05)
@@ -305,8 +306,7 @@ local function layer2bot()
                 VIM:SendKeyEvent(true, 49, false, game)
                 wait(0.05)
                 VIM:SendKeyEvent(false, 49, false, game)
-            elseif _ == 7 then
-                wait(1) 
+            elseif _ == 8 then
                 delete_bonekeeper()
             elseif _ == 15 then 
                 wait(6)
