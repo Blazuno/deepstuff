@@ -308,7 +308,7 @@ local function layer2bot()
                 VIM:SendKeyEvent(false, 49, false, game)
             elseif _ == 8 then
                 delete_bonekeeper()
-            elseif _ == 15 then 
+            elseif _ == 16 then 
                 wait(6)
             end
         end
