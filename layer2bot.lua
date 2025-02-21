@@ -146,7 +146,7 @@ local function better_fly(goal, speed, look)
     local thread = task.spawn(function()
         while true do
             wait()
-            if (old_pos - chr.HumanoidRootPart.Position).Magnitude <= 20 then 
+            if (old_pos - chr.HumanoidRootPart.Position).Magnitude <= 50 then 
                 old_pos = chr.HumanoidRootPart.Position
             else 
                 print("detected rubber banding, retrying")
@@ -198,6 +198,7 @@ local function delete_bonekeeper()
     VIM:SendKeyEvent(true, 114, false, game)
     wait(0.05)
     VIM:SendKeyEvent(false, 114, false, game)
+    wait(1.5)
     fly_to(point3, 150)
     wait(2)
     if boy:FindFirstChild("HumanoidRootPart") then 
