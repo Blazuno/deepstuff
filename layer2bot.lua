@@ -164,6 +164,7 @@ local function better_fly(goal, speed, look)
     end)
     wait(tween.TweenInfo.Time)
     task.cancel(thread)
+    wait(0.1)
     if (chr.HumanoidRootPart.Position - goal).Magnitude >=10 then failed = true end
     if failed then return better_fly(goal, speed, look) end
 end
