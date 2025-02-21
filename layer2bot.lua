@@ -52,7 +52,7 @@ local positions = {
     Vector3.new(-5493.36669921875, 383.2544250488281, -5819.6513671875),
     Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
     Vector3.new(-5983.35693359375, 443.8338623046875, -6298.9658203125),
-    Vector3.new(-5746.16064453125, 459.4011535644531, -6364.5498046875), -- bonekeeper
+    Vector3.new(-5790.96044921875, 459.401123046875, -6343.06396484375), -- bonekeeper
     Vector3.new(-5557.0380859375, 529.257568359375, -6477.33984375),-- generator
     Vector3.new(-5698.533203125, 402.0506286621094, -6069.64013671875),
     Vector3.new(-5452.01025390625, 353.6543884277344, -5654.0517578125),
@@ -180,7 +180,7 @@ local function delete_chaser()
     cast_remote:FireServer(galetrap)
     wait(2)
     if chaser then 
-        fly_to(Vector3.new(-4294.63330078125, 737.140869140625, -5154.39697265625), 200)
+        fly_to(Vector3.new(-4175.39892578125, 489.6296081542969, -5293.943359375), 200)
         repeat wait() until not game.Workspace.Live:FindFirstChild(".chaser")
         print("Chaser dead")
     end
@@ -263,8 +263,6 @@ end
 local function layer2bot()
     repeat wait() until game:IsLoaded()   
     if game.PlaceId == 8668476218 then
-        mb_1()
-        wait(10)
         noclip(true)
         nofall()
         VIM:SendKeyEvent(true, 49, false, game)
