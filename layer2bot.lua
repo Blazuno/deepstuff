@@ -195,8 +195,6 @@ local function delete_bonekeeper()
     VIM:SendKeyEvent(true, 114, false, game)
     wait(0.05)
     VIM:SendKeyEvent(false, 114, false, game)
-    wait(3)
-    fly_to(point3, 150)
     wait(2)
     if boy:FindFirstChild("HumanoidRootPart") then 
         local cd = false
