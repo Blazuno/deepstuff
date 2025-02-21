@@ -250,10 +250,10 @@ local function destroy_jars()
     local destructibles = game.Workspace.Destructibles:GetChildren()
     for _, jar in pairs(destructibles) do
         if jar.Name == "BloodJar" and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment") and jar:FindFirstChild("AttachmentPart"):FindFirstChild("Attachment"):FindFirstChild("JarLight") then
-            local look = Vector3.new(jar.Part.Position.X, 0, jar.Part.Position.Z)
             local next = false
             spawn(function()
                 while not next do
+                    local look = Vector3.new(jar.Part.Position.X, chr.HumanoidRootPart.Position.Y, jar.Part.Position.Z)
                     local tween = fly_to(jar.Part.Position + Vector3.new(4,0,4), 200, look)
                     wait(tween.TweenInfo.Time)
                 end
