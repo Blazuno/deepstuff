@@ -1,4 +1,6 @@
 -- heeelllppp
+print("Blazehub is back babyyyyyyy, l2 bot go!")
+
 queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepstuff/refs/heads/main/layer2bot.lua"))
 repeat wait() until game:IsLoaded()
 wait(5)
