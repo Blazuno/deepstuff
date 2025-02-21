@@ -19,7 +19,7 @@ if game.PlaceId == 4111023553 then
 elseif game.PlaceId == 8668476218 then 
     wait(7)
     mb_1()
-    wait(25)
+    wait(5)
 end
 
 
@@ -198,7 +198,7 @@ local function delete_bonekeeper()
     VIM:SendKeyEvent(true, 114, false, game)
     wait(0.05)
     VIM:SendKeyEvent(false, 114, false, game)
-    wait(1.5)
+    wait(3)
     fly_to(point3, 150)
     wait(2)
     if boy:FindFirstChild("HumanoidRootPart") then 
