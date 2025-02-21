@@ -180,7 +180,7 @@ local function delete_chaser()
     cast_remote:FireServer(galetrap)
     wait(2)
     if chaser then 
-        fly_to(Vector3.new(-4175.39892578125, 489.6296081542969, -5293.943359375), 200)
+        fly_to(Vector3.new(-4598.4892578125, 755.0444946289062, -5154.6220703125), 200)
         repeat wait() until not game.Workspace.Live:FindFirstChild(".chaser")
         print("Chaser dead")
     end
