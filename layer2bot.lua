@@ -26,7 +26,7 @@ elseif game.PlaceId == 8668476218 then
     wait(5)
     mb_1()
     wait(5)
-    repeat wait() until game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.MaxHealth > 0.85
+    repeat wait() until game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth > 0.85
 end
 
 
