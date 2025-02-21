@@ -17,7 +17,7 @@ if game.PlaceId == 4111023553 then
         wait(3)
     until false
 elseif game.PlaceId == 8668476218 then 
-    wait(7)
+    wait(5)
     mb_1()
     wait(5)
     repeat wait() until game.Players.LocalPlayer.Character.Humanoid.Health > 85
