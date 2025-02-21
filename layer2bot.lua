@@ -25,7 +25,7 @@ elseif game.PlaceId == 8668476218 then
     wait(5)
     mb_1()
     wait(3)
-    repeat wait() until game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth > 0.85
+    repeat wait() print("Current HP:", game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth) until game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth > 0.85
 end
 
 
@@ -171,6 +171,14 @@ local function delete_chaser()
     local chaser = game.Workspace.Live:FindFirstChild(".chaser")
     local torso = chaser.Torso
     local tween = fly_to(chaser.Torso.Position + Vector3.new(5,0,5), 100, chaser.Torso.Position)
+    game.Workspace.Thrown.ChildAdded:Connect(function(c)
+        if c.Name == "PerilousAttack" or c.Name == "SpikeAttackEff" then 
+            wait(0.1)
+            VIM:SendKeyEvent(true, 113, false, game)
+            wait(0.05)
+            VIM:SendKeyEvent(false, 113, false, game)
+        end
+    end)
     wait(tween.TweenInfo.Time)
     game.Workspace.CurrentCamera.CFrame = CFrame.lookAt(game.Workspace.CurrentCamera.CFrame.Position, chaser.Torso.Position)
     wait(0.5)
