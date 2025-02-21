@@ -4,7 +4,9 @@ print("Blazehub is back babyyyyyyy, l2 bot go!")
 queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepstuff/refs/heads/main/layer2bot.lua"))
 repeat wait() until game:IsLoaded()
 wait(5)
+
 local settings = game:GetService("HttpService"):JSONDecode(readfile("blazehub.txt"))
+print("Loaded settings:", unpack(settings))
 local VIM = game:GetService("VirtualInputManager")
 local slot = settings.slot
 local items = settings.items
