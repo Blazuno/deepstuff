@@ -176,7 +176,7 @@ local function delete_chaser()
     wait(2)
     if chaser then 
         fly_to(Vector3.new(-4448.94384765625, 641.6946411132812, -5152.5166015625), 200)
-        repeat wait() until not chaser
+        repeat wait() until not game.Workspace.Live:FindFirstChild(".chaser")
         print("Chaser dead")
     end
 end
@@ -310,6 +310,8 @@ local function layer2bot()
         wait(0.05)
         VIM:SendKeyEvent(false, 49, false, game)
         wait(0.6)
+        chr.HumanoidRootPart.CFrame = CFrame.new(chr.HumanoidRootPart.Position, chaser.HumanoidRootPart.Position)
+        wait(0.2)
         mb_1()
         chr.HumanoidRootPart.Anchored = false
         repeat wait() until chaser.Torso.Position.Y >= 655
