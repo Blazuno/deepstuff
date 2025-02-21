@@ -3,7 +3,6 @@ print("Blazehub is back babyyyyyyy, l2 bot go!")
 
 queue_on_teleport(game:HttpGet("https://raw.githubusercontent.com/Blazuno/deepstuff/refs/heads/main/layer2bot.lua"))
 repeat wait() until game:IsLoaded()
-wait(5)
 
 local settings = game:GetService("HttpService"):JSONDecode(readfile("blazehub.txt"))
 print("Loaded settings:", unpack(settings))
@@ -25,7 +24,7 @@ if game.PlaceId == 4111023553 then
 elseif game.PlaceId == 8668476218 then 
     wait(5)
     mb_1()
-    wait(5)
+    wait(3)
     repeat wait() until game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth > 0.85
 end
 
@@ -218,9 +217,9 @@ local function delete_bonekeeper()
         end)
         
         local switch = false
-        while boy do
+        while boy:FindFirstChild("HumanoidRootPart") do
             wait()
-            pcall(function()
+            if boy:FindFirstChild("HumanoidRootPart") then
                 if (boy.HumanoidRootPart.Position - chr.HumanoidRootPart.Position).Magnitude <= 35 then
                     fly_to(point3, 225)
                     wait(2)
@@ -232,7 +231,7 @@ local function delete_bonekeeper()
                         switch = true
                     end
                 end
-            end)
+            end
         end
     end
 end
